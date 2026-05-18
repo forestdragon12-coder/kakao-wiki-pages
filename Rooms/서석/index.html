@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>서석 Wiki</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    :root {
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #697386;
+      --line: #d8dee9;
+      --paper: #ffffff;
+      --soft: #f5f7fa;
+      --accent: #1f7a8c;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    main {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    header {
+      border-bottom: 2px solid var(--line);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+    }
+    h1, h2 {
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    h1 { font-size: 30px; }
+    h2 {
+      border-top: 1px solid var(--line);
+      font-size: 21px;
+      margin-top: 28px;
+      padding-top: 20px;
+    }
+    .meta {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 14px;
+    }
+    .meta span {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+    .report h1 {
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+    .report h3 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+    .issue-card {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      margin: 14px 0;
+      padding: 14px 16px;
+      background: #fbfcfe;
+    }
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+      gap: 10px;
+      padding: 0;
+    }
+    .date-grid li {
+      list-style: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fbfcfe;
+    }
+    .link-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }
+    a {
+      color: var(--accent);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    p, li {
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    .message-list li {
+      border-bottom: 1px solid var(--line);
+      list-style: none;
+      margin: 0;
+      padding: 9px 0;
+    }
+    .message-list {
+      padding: 0;
+    }
+    .sender {
+      font-weight: 700;
+    }
+    .time {
+      color: var(--muted);
+      font-size: 13px;
+      margin-right: 8px;
+    }
+    @media (max-width: 640px) {
+      main {
+        padding: 16px 10px 32px;
+      }
+      header {
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+        margin-top: 22px;
+        padding-top: 16px;
+      }
+      .report h1 {
+        font-size: 23px;
+        margin-bottom: 18px;
+      }
+      .report h3 {
+        font-size: 16px;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        font-size: 12px;
+      }
+      .panel {
+        border-radius: 6px;
+        margin: 12px 0;
+        padding: 12px;
+      }
+      .issue-card {
+        border-left-width: 3px;
+        border-radius: 6px;
+        margin: 10px 0;
+        padding: 11px 10px;
+      }
+      ul {
+        padding-left: 18px;
+      }
+      li {
+        margin: 5px 0;
+      }
+      .date-grid {
+        grid-template-columns: 1fr;
+      }
+      .link-note {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>서석 Wiki</h1>
+  <div class="meta">
+    <span>기간 2026-05-18 ~ 2026-05-19</span>
+    <span>최근 날짜 2026-05-19</span>
+    <span>메시지 808개</span>
+    <span>참여자 6명</span>
+    <span>요약 TXT 생성됨: 20260519-001707-서석.txt</span>
+    <span>방별 공유 URL: https://forestdragon12-coder.github.io/kakao-wiki-pages/Rooms/%EC%84%9C%EC%84%9D/index.html</span>
+  </div>
+</header>
+
+<section class="panel report">
+  <h1>서석 대화 흐름 지도</h1>
+<h2>1. 오늘 흐름 한눈에 보기</h2>
+<p>새벽에는 사진·링크·정치성 짤 반응으로 느슨하게 시작했고, 오전 핵심은 국내장 급락·반등을 두고 상민과 임미르가 실시간으로 흔들린 장면이었다.</p>
+<p>오후에는 러닝·정치 농담을 지나, 데이터센터 시행·전력·인허가·PF 가능성으로 가장 긴 실무형 대화가 이어졌다.</p>
+<p>그 뒤 AI 보고서·Claude 팀플랜·업무용 AI 활용으로 흐름이 옮겨가며 “AI를 어떻게 써야 하느냐”가 부주제가 됐다.</p>
+<p>서환이의 괌 파견·차 매각·괌 생활 얘기가 저녁 흐름을 잡았고, 밤에는 피곤함·술·주식 야간장 반응으로 다시 잡담형 마무리로 돌아갔다.</p>
+<p>가장 큰 전환점은 `주식 실시간 반응 -&gt; 데이터센터 사업성 토론 -&gt; 괌 생활/차 매각`으로 넘어간 오후 구간이다.</p>
+<h2>2. 대화 타임라인</h2>
+<section class="issue-card">
+<h3>1. 새벽 짤과 링크로 열린 방</h3>
+<p>임미르가 사진과 짧은 반응, Threads·Instagram 링크를 던지며 하루 대화를 열었다.</p>
+<p>상민은 이른 아침 사진을 이어 받고, 정치·사회 이슈를 비판적으로 받아치며 분위기를 이어갔다.</p>
+<p>이 흐름은 명확한 결론 없이 오전 증시 이야기로 넘어갔다.</p>
+</section>
+<section class="issue-card">
+<h3>2. 오전 장 시작, “폭락장” 반응</h3>
+<p>상민이 국내장이 크게 밀린다고 먼저 던졌고, 임미르는 “탈출이 먼저였다”는 식으로 손실감과 후회를 받았다.</p>
+<p>상민은 반도체 쏠림 가능성을 말했고, 임미르는 체념 섞인 농담으로 반응했다.</p>
+<p>곧 DS News 브리핑이 공유되며 “주가 왜 이러는지도 봐달라”는 요청성 흐름으로 전환됐다.</p>
+</section>
+<section class="issue-card">
+<h3>3. 장중 급반전과 물타기 후회</h3>
+<p>상민이 “태초마을”이라며 하락 체감을 말한 뒤, 코스피가 살아난다는 반응을 다시 올렸다.</p>
+<p>임미르는 물을 탔어야 했다, 물이 없다, 특정 종목이 아쉽다는 식으로 실시간 후회를 이어갔다.</p>
+<p>외국인 매도·미국주식 쪽으로 시선이 넘어가며 오전 투자 대화가 마무리됐다.</p>
+</section>
+<section class="issue-card">
+<h3>4. 정치·밈·AI 이름 장난</h3>
+<p>정치 인물의 5·18 방문 여부와 관련된 말이 나오자 상민이 과격 농담으로 받았고, 임미르는 링크와 짤 반응으로 흐름을 가볍게 넘겼다.</p>
+<p>이어 “헨트 아이/헨타이” 식 말장난과 “현b.ai, 상.ai” 같은 AI 이름 장난이 붙었다.</p>
+<p>정치 이슈는 깊게 논의되지 않고 밈과 농담으로 흩어졌다.</p>
+</section>
+<section class="issue-card">
+<h3>5. 피곤함에서 러닝·장비 이야기로 이동</h3>
+<p>상민이 교육 후 피곤함과 근로시간 단축 농담을 던졌고, 임미르는 동조하며 가볍게 받았다.</p>
+<p>상민이 러닝캡 가격을 말하자 서환이가 코스트코 제품과 달리기 장소 사진으로 현실적인 대안을 보탰다.</p>
+<p>임미르는 러닝 중독자 농담으로 받았고, 이후 정치·주식 이야기로 다시 꺾였다.</p>
+</section>
+<section class="issue-card">
+<h3>6. 오후 정치·주식 재점화</h3>
+<p>임미르가 정치 관련 이미지에 솔깃하다고 하자 상민은 노란봉투법과 표 계산을 비판하는 쪽으로 받았다.</p>
+<p>임미르는 주가 상승과 대통령 힘을 섞어 농담했고, 이후 대우건설·현대·대한전선 등 매매 감정으로 흘렀다.</p>
+<p>이 구간은 실시간 투자 후회와 정치 해석이 섞이다가 서환이의 차 매각 얘기로 끊겼다.</p>
+</section>
+<section class="issue-card">
+<h3>7. 테슬라 매각에서 데이터센터 사업성 토론으로 확장</h3>
+<p>서환이가 테슬라를 보내야 해서 입찰에 올렸다고 했고, 임미르는 괌에서 운전·차량 문제를 물으며 받았다.</p>
+<p>임미르가 곧바로 데이터센터 시행을 아느냐고 묻자, 서환이는 전력·발전소·인허가 관점에서 답했다.</p>
+<p>이후 전력망, 신재생, 수도권 입지, PF, 입주자 신용도까지 이어지며 하루의 가장 긴 실무형 대화가 됐다.</p>
+</section>
+<section class="issue-card">
+<h3>8. AI 보고서와 업무 자동화 토론</h3>
+<p>임미르가 AI가 만든 데이터센터 보고서 파일을 여러 번 공유하며 “이 정도는 짠다”고 설명했다.</p>
+<p>상민은 포맷과 배치가 직접 표준화된 것인지 물었고, 서환이는 건설 리포트·자료 취합에 AI를 쓸 수 있는지 물었다.</p>
+<p>임미르는 검수 없는 AI 결과물을 낮게 보면서도, 자신은 에이전트를 많이 다듬어 보고서를 만든다고 설명했다.</p>
+</section>
+<section class="issue-card">
+<h3>9. 괌 파견, 차 매각, 생활 조건</h3>
+<p>서환이의 괌 사진과 생활비·더위·운동 환경 이야기가 나오자 상민과 임미르가 여행·운동·골프·호텔 얘기로 받았다.</p>
+<p>전우성은 차 가격 제안 농담을 넣었고, 상민은 차를 못 가져가는 이유와 서울 집 이야기로 반응했다.</p>
+<p>테슬라 반출 조건, 괌 전기요금, 현지 운동 환경이 섞이다가 괌 호텔·식당 후기 흐름으로 이어졌다.</p>
+</section>
+<section class="issue-card">
+<h3>10. 저녁 피로, 술, 밤 주식 확인</h3>
+<p>상민이 하루가 피곤하다며 생맥주를 마시고 싶다고 했고, 강병훈은 막걸리로 받았다.</p>
+<p>현배와 전우성도 피곤함에 공감하며 저녁의 느슨한 정서가 만들어졌다.</p>
+<p>밤에는 상민이 다시 반도체·키옥시아·나스닥을 꺼냈고, 임미르는 야간장과 로보 AI 종목 반응으로 하루를 닫았다.</p>
+</section>
+<h2>3. 장면별 상세 복기</h2>
+<section class="issue-card">
+<h3>장면 1. 오전 증시 급락과 반등</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 상민이 아침 국내장이 크게 밀린다고 먼저 분위기를 잡았다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 상민: 오늘도 크게 빠진다며 장 초반 분위기를 경고했다.</p>
+<p>  - 임미르: 탈출이 먼저였다는 말로 뒤늦은 후회를 드러냈다.</p>
+<p>  - 상민: 하락이 세고, 결국 반도체로 돈이 몰릴 것 같다고 해석했다.</p>
+<p>  - 임미르: 이미 늦었다는 식의 자조 농담으로 반응했다.</p>
+<p>  - 상민: 이후 코스피가 되살아난다고 말하며 분위기를 다시 뒤집었다.</p>
+<p>  - 임미르: 물을 탔어야 했다며 반등 구간을 놓친 아쉬움을 말했다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: 공포감에서 후회, 다시 반등 확인으로 이동했다.</li>
+<li><strong>전환 계기</strong>: DS News 브리핑 공유와 “주가 원인도 확인해달라”는 상민의 요청.</li>
+<li><strong>남은 맥락</strong>: 실제 하락 원인 분석은 대화 안에서 확정되지 않았다.</li>
+<li><strong>근거 수준</strong>: 대화상 확인. 시장 원인은 미확인.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>장면 2. 정치 짤과 밈으로 흩어진 낮 대화</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 임미르가 5·18 관련 정치 인물 방문 여부를 물었다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 임미르: 정치 일정성 질문을 던졌다.</p>
+<p>  - 상민: 과격한 농담으로 받아 분위기를 장난 쪽으로 틀었다.</p>
+<p>  - 임미르: 외부 링크와 사진 반응을 덧붙이며 충격·웃음 반응을 보였다.</p>
+<p>  - 임미르: “헨트 아이/헨타이” 식 말장난으로 주제를 가볍게 바꿨다.</p>
+<p>  - 상민: 웃음으로 받아 별도 정치 토론으로 깊게 가지 않았다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: 정치 이슈에서 밈, AI식 이름 장난으로 확산됐다.</li>
+<li><strong>전환 계기</strong>: 이미지·링크 기반 반응이 많아지면서 논의보다 리액션 중심이 됐다.</li>
+<li><strong>남은 맥락</strong>: 링크 내용 자체는 방 안에서 상세히 검증되지 않았다.</li>
+<li><strong>근거 수준</strong>: 대화 흐름은 확인. 링크 내용은 미확인.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>장면 3. 러닝 장비와 “영포티” 농담</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 상민이 러닝캡 가격이 비싸다고 말했다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 상민: 러닝캡 가격을 보고 부담스럽다고 던졌다.</p>
+<p>  - 서환이: 코스트코의 저렴한 제품과 달리기 장소 사진으로 받았다.</p>
+<p>  - 임미르: 같은 곳을 도는 러닝을 보고 장난스럽게 놀렸다.</p>
+<p>  - 상민: 실제로 그 장소에서 뛰려 했고 오르막이 있다고 설명했다.</p>
+<p>  - 임미르: 러닝 중독자와 중년 취미 느낌으로 농담을 붙였다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: 장비 가격 불평에서 실제 러닝 코스, 취미 놀림으로 이동했다.</li>
+<li><strong>전환 계기</strong>: 임미르가 다른 영상 링크를 던지며 “즐거운 거 보라”고 했다.</li>
+<li><strong>남은 맥락</strong>: 실제 러닝 계획이나 구매 결정은 나오지 않았다.</li>
+<li><strong>근거 수준</strong>: 대화상 확인.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>장면 4. 데이터센터 사업성 토론</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 임미르가 서환이에게 데이터센터 시행을 아느냐고 물었다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 임미르: 데이터센터를 해보고 싶은데 전문가 찾기가 어렵다고 말했다.</p>
+<p>  - 서환이: 발전소와 함께 검토했던 경험을 바탕으로 전력 규모와 허가 관점을 설명했다.</p>
+<p>  - 임미르: 인천·솔라시도·수도권 규제 가능성 등을 연결해 사업 기회를 물었다.</p>
+<p>  - 서환이: 전력망, 송배전 인프라, 신재생 전력 품질, 인력 수급 문제를 짚었다.</p>
+<p>  - 임미르: PF 준비 사례와 시행자의 역할을 이야기하며 본인이 배우고 싶다고 했다.</p>
+<p>  - 서환이: 결국 투자자와 입주자를 얼마나 확보하느냐가 중요하다고 정리했다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: “해보고 싶다”는 관심에서 전력·입지·수요자·PF 구조 검토로 깊어졌다.</li>
+<li><strong>전환 계기</strong>: 임미르가 AI 보고서 파일을 공유하며 검토 자료 성격을 붙였다.</li>
+<li><strong>남은 맥락</strong>: 실제 인천 가능 부지, 전력 인입 가능성, PF 조건은 확인 필요로 남았다.</li>
+<li><strong>근거 수준</strong>: 대화상 실무 의견. 사업성·정책·허가 가능성은 미확인.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>장면 5. AI 보고서와 업무용 AI 학습</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 임미르가 AI가 데이터센터 관련 보고서를 만들어준다고 파일을 공유했다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 임미르: AI 보고서 결과물을 보여주며 정확성은 아직 모르겠다고 말했다.</p>
+<p>  - 상민: 보고서의 색·배치·포맷을 직접 표준화한 것인지 물었다.</p>
+<p>  - 서환이: 건설 리포트처럼 자료 여러 개를 넣어 보고서를 만들 수 있느냐고 물었다.</p>
+<p>  - 임미르: 검수 없는 AI 결과물은 쓸모가 낮고, 자신은 에이전트를 많이 다듬었다고 설명했다.</p>
+<p>  - 상민: 일단 AI에게 가능한지 물어보는 것부터 하라고 조언했다.</p>
+<p>  - 서환이: 회의에서 설명하고 따지려면 어느 정도는 알아야 한다고 반응했다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: AI 보고서 자랑에서 업무 자동화 가능성, AI 사용 습관 문제로 이동했다.</li>
+<li><strong>전환 계기</strong>: 서환이가 실제 회사 보고서 작성 업무에 적용 가능하냐고 묻기 시작했다.</li>
+<li><strong>남은 맥락</strong>: 어떤 도구와 절차로 보고서를 만들었는지는 구체적으로 공개되지 않았다.</li>
+<li><strong>근거 수준</strong>: 대화상 확인. 실제 보고서 품질은 미검증.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>장면 6. 괌 파견과 생활 정보 교환</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 서환이가 괌 관련 사진과 생활비·더위 이야기를 꺼냈다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 서환이: 괌의 바다 전망, 비싼 거주비, 더운 날씨를 말했다.</p>
+<p>  - 상민: 왜 그렇게 힘든지 묻고, 실내 스포츠나 농구 농담으로 받았다.</p>
+<p>  - 임미르: 괌 경험을 바탕으로 호텔과 더위, 골프·AI 공부를 섞어 조언했다.</p>
+<p>  - 서환이: 자전거와 러닝 장비를 준비했지만 실제로는 타기 어려울 것 같다고 했다.</p>
+<p>  - 전우성: 차 가격 제안 농담으로 끼어들었다.</p>
+<p>  - 강병훈: 저녁에는 차·자전거·스키를 묶은 농담으로 흐름을 받았다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: 파견 생활 조건에서 차량 처분, 호텔, 음식, 운동 환경으로 퍼졌다.</li>
+<li><strong>전환 계기</strong>: 서환이의 차 매각과 괌 반입 불가 조건 설명.</li>
+<li><strong>남은 맥락</strong>: 실제 차량 매각 가격과 거래 성사 여부는 확정되지 않았다.</li>
+<li><strong>근거 수준</strong>: 대화상 확인. 제도·비용 세부는 미확인.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>장면 7. 저녁 피로와 술 한잔 정서</h3>
+<ul>
+<li><strong>처음 던진 말</strong>: 상민이 하루가 매우 피곤하고 생맥주가 당긴다고 말했다.</li>
+<li><strong>발화 연쇄</strong></li>
+</ul>
+<p>  - 상민: 집에 오면 맥주를 마시고 싶다며 의존인지 농담처럼 물었다.</p>
+<p>  - 강병훈: 자신은 막걸리를 조금씩 마신다고 받았다.</p>
+<p>  - 임미르: 알코올 의존 농담으로 짧게 반응했다.</p>
+<p>  - 현배: 하루하루 힘든 느낌을 안다고 공감했다.</p>
+<p>  - 전우성: 본인도 힘들다고 보탰다.</p>
+<p>  - 상민: 아재들끼리 맥주 한잔 하자는 식으로 정서를 묶었다.</p>
+<ul>
+<li><strong>대화가 움직인 방향</strong>: 개인 피로에서 단체 공감, 가벼운 술자리 상상으로 이동했다.</li>
+<li><strong>전환 계기</strong>: 상민이 밤에 다시 Instagram 링크와 주식 이야기를 꺼냈다.</li>
+<li><strong>남은 맥락</strong>: 실제 만남 약속은 잡히지 않았다.</li>
+<li><strong>근거 수준</strong>: 대화상 확인.</li>
+</ul>
+</section>
+<h2>4. 흐름이 끊긴 지점</h2>
+<section class="issue-card">
+<h3>갑자기 바뀐 순간</h3>
+<ul>
+<li>오전 정치·사회 짤 흐름은 별도 결론 없이 주식 폭락 이야기로 넘어갔다.</li>
+<li>러닝캡·러닝 코스 이야기는 영상 링크와 정치 이미지 공유로 갑자기 끊겼다.</li>
+<li>데이터센터 심층 대화 중간중간 AI 보고서 파일, 당근 후기, 괌 생활 얘기가 끼어들며 주제가 여러 갈래로 갈라졌다.</li>
+<li>괌 호텔·식당 후기는 데이터센터 보고서 개정판 파일 공유로 한 차례 끊겼다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>이어질 듯하다 끊긴 순간</h3>
+<ul>
+<li>상민이 “주가 왜 이러는지도 확인해달라”고 했지만, 방 안에서는 원인 분석이 완성되지 않았다.</li>
+<li>임미르가 데이터센터 인천 입지 가능성을 물었지만, 실제 후보지·전력 인입 여부까지는 확인되지 않았다.</li>
+<li>서환이가 AI로 건설 리포트 작성이 가능한지 물었지만, 구체적인 작업 절차나 샘플 테스트로 이어지지는 않았다.</li>
+<li>현배가 차를 파냐고 물었지만, 거래 조건은 전우성의 개인 대화 언급과 농담으로만 남았다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>확인 없이 넘어간 순간</h3>
+<ul>
+<li>공유된 뉴스·Threads·Instagram 링크 다수는 내용 검증 없이 반응만 오갔다.</li>
+<li>데이터센터 관련 정책, 수도권 제한, 신재생 전력 품질, PF 가능성은 대화상 의견으로만 남았다.</li>
+<li>Claude 팀플랜 비용과 인원 조건은 대화 안에서 정정은 있었지만 공식 확인은 없다.</li>
+<li>괌 차량 반입·등록 조건, 토지허가제 관련 언급은 경험담·전언 수준이다.</li>
+</ul>
+</section>
+<h2>5. 남은 할일·미확인</h2>
+<section class="issue-card">
+<h3>결정된 것</h3>
+<ul>
+<li>오늘 대화의 중심 흐름은 주식 실시간 반응, 데이터센터 사업 관심, AI 업무 활용, 괌 파견 생활로 정리된다.</li>
+<li>임미르는 데이터센터 시행과 AI 보고서 제작에 관심이 크고, 관련 자료를 계속 만들고 있었다.</li>
+<li>서환이는 괌 이동과 차량 정리 이슈가 있으며, 데이터센터 전력·발전 관점에서 의견을 제공했다.</li>
+<li>저녁에는 피로와 술 이야기가 공통 정서로 모였다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>확인할 것</h3>
+<ul>
+<li>오늘 국내장 급락·반등의 실제 원인.</li>
+<li>인천 데이터센터 후보지의 전력 인입 가능성, 송배전 여건, 인허가 리스크.</li>
+<li>데이터센터 PF에서 필요한 입주자 신용도·선계약·대기업 참여 조건.</li>
+<li>AI 보고서의 수치·정책·사업성 가정이 실제 자료와 맞는지.</li>
+<li>괌 차량 반입·등록 제한과 현지 전기차 유지 조건.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>그냥 던진 말</h3>
+<ul>
+<li>정치 인물·정당 관련 평가는 대부분 짤 반응과 농담성 해석에 가깝다.</li>
+<li>주식 몰빵, 손절, 물타기 표현은 실시간 감정 반응이지 확정 투자 계획으로 보기 어렵다.</li>
+<li>괌에서 운동·골프·AI 공부를 하라는 말은 조언과 장난이 섞여 있다.</li>
+<li>차·자전거·스키를 묶어 거래하자는 말은 농담 흐름이다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>미확인</h3>
+<ul>
+<li>공유된 사진의 구체 내용은 원문 로그상 “사진”으로만 표시되어 확인할 수 없다.</li>
+<li>공유된 HTML 보고서 파일의 실제 내용과 품질은 이 대화만으로 검증되지 않는다.</li>
+<li>외부 링크의 기사·릴스·스레드 내용은 대화 속 반응만 확인된다.</li>
+<li>특정 회사·인물·사업 사례의 사실관계는 대화상 전언이며 별도 확인이 필요하다.</li>
+</ul>
+</section>
+<h2>6. 사람별 한 줄 감상</h2>
+<ul>
+<li>임미르: 오늘 흐름의 대부분을 던지고 연결한 사람으로, 주식 감정·데이터센터 관심·AI 보고서를 계속 밀어 넣었다.</li>
+<li>상민: 장중 주식 반응과 정치·사회 비판, 피로감 토로로 대화의 리액션 축을 만들었다.</li>
+<li>서환이: 괌 파견·차 매각 이야기를 가져오면서도 데이터센터 전력·발전 관점의 현실 조건을 가장 많이 붙였다.</li>
+<li>전우성: 차 가격 농담과 짧은 리액션으로 중간중간 분위기를 가볍게 받았다.</li>
+<li>강병훈: 저녁에 차·영종 구장·술 이야기로 느슨한 생활형 흐름을 보탰다.</li>
+<li>현배: 차 매각 질문과 하루 피로 공감으로 짧지만 흐름 전환점에 반응했다.</li>
+</ul>
+<h2>7. 카카오톡 발송용 짧은 요약</h2>
+<p>서석 오늘 흐름은 오전 주식 급락·반등 반응에서 시작해서, 오후엔 데이터센터 시행·전력·PF 얘기가 가장 길게 이어졌습니다.</p>
+<p>중간에 AI 보고서, Claude 팀플랜, 업무용 AI 활용 얘기가 붙었고, 서환이 괌 파견·차 매각·현지 생활 얘기로 저녁 흐름이 넘어갔습니다.</p>
+<p>밤에는 다들 피곤함과 술 한잔 정서로 느슨해졌다가, 다시 야간장·반도체·로보 AI 종목 반응으로 마무리됐습니다.</p>
+<p>사진·링크 내용은 원문상 확인이 제한되어 “반응 중심”으로만 정리했습니다.</p>
+<p>전체 흐름 지도: <a href="https://forestdragon12-coder.github.io/kakao-wiki-pages/Rooms/%EC%84%9C%EC%84%9D/index.html">https://forestdragon12-coder.github.io/kakao-wiki-pages/Rooms/%EC%84%9C%EC%84%9D/index.html</a></p>
+</section>
+
+<section class="panel">
+  <h2>날짜별 페이지</h2>
+  <ul class="date-grid"><li><a href="2026-05-18.html">2026-05-18</a><div>806 messages</div><div class="link-note">https://forestdragon12-coder.github.io/kakao-wiki-pages/Rooms/%EC%84%9C%EC%84%9D/2026-05-18.html</div></li><li><a href="2026-05-19.html">2026-05-19</a><div>2 messages</div><div class="link-note">https://forestdragon12-coder.github.io/kakao-wiki-pages/Rooms/%EC%84%9C%EC%84%9D/2026-05-19.html</div></li></ul>
+  <p>원문 대화 로그와 공유 링크 원문 목록은 공개 HTML에 싣지 않습니다.</p>
+</section>
+
+</main>
+</body>
+</html>
