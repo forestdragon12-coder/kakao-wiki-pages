@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>베르힐(임글) 이글라운딩_5장 사람 관계도</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #68707d;
+      --line: #d9e0e7;
+      --paper: #ffffff;
+      --soft: #f6f4ee;
+      --soft-2: #eef5f3;
+      --accent: #16736f;
+      --accent-2: #b45309;
+      --accent-3: #4f46e5;
+      --shadow: 0 14px 38px rgba(35, 42, 52, 0.08);
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+      line-height: 1.62;
+      overflow-x: hidden;
+    }
+    main {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      padding: 20px;
+    }
+    h1, h2 {
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    h1 { font-size: 30px; letter-spacing: 0; }
+    h2 {
+      border-top: 1px solid var(--line);
+      font-size: 21px;
+      margin-top: 30px;
+      padding-top: 22px;
+    }
+    .meta {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 14px;
+    }
+    .meta span {
+      background: #f8fafc;
+      border: 1px solid #e3e9ef;
+      border-radius: 999px;
+      max-width: 100%;
+      padding: 5px 9px;
+      overflow-wrap: anywhere;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+    .report h1 {
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+    .report h2:first-of-type {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .report h3 {
+      color: #132f2c;
+      font-size: 18px;
+      margin: 0 0 11px;
+    }
+    .issue-card {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      margin: 13px 0;
+      padding: 15px 17px;
+      background: linear-gradient(90deg, #fbfffd 0%, #ffffff 45%);
+    }
+    .report h2:nth-of-type(1) + ul {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+    }
+    .report h2:nth-of-type(1) + ul > li {
+      background: var(--soft-2);
+      border: 1px solid #d8e7e3;
+      border-radius: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 12px 14px;
+    }
+    .report p {
+      margin: 8px 0;
+    }
+    .report ul {
+      margin: 8px 0 0;
+    }
+    .report .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    .report table {
+      border-collapse: collapse;
+      min-width: 100%;
+      font-size: 14px;
+    }
+    .report th,
+    .report td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .report th {
+      background: #eef5f3;
+      color: #132f2c;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .report li strong:first-child {
+      color: var(--accent);
+    }
+    code {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      color: #334155;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      padding: 1px 5px;
+    }
+    .guide {
+      background: #fffaf0;
+      border-color: #ead9b8;
+    }
+    .guide h2 {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .wiki-nav {
+      display: grid;
+      gap: 14px;
+    }
+    .wiki-nav h2 {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .wiki-nav-note {
+      color: var(--muted);
+      margin: 0;
+    }
+    .wiki-current {
+      align-items: start;
+      background: #f8fbfa;
+      border: 1px solid #d6e6e2;
+      border-radius: 8px;
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+    }
+    .wiki-current a,
+    .archive-link {
+      font-weight: 800;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+      gap: 10px;
+      padding: 0;
+    }
+    .archive-grid li {
+      list-style: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfe;
+    }
+    .archive-grid li.selected {
+      background: #f1f8f7;
+      border-color: #9fd2cb;
+      box-shadow: inset 0 0 0 1px #bfe2dd;
+    }
+    .archive-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .archive-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .archive-search {
+      display: grid;
+      gap: 12px;
+    }
+    .search-row {
+      display: grid;
+      gap: 8px;
+    }
+    .search-label {
+      color: #25313c;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    .archive-search input {
+      appearance: none;
+      background: #ffffff;
+      border: 1px solid #cbd7df;
+      border-radius: 8px;
+      color: var(--ink);
+      font: inherit;
+      min-height: 44px;
+      outline: none;
+      padding: 10px 12px;
+      width: 100%;
+    }
+    .archive-search input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(22, 115, 111, 0.14);
+    }
+    .search-results {
+      display: grid;
+      gap: 8px;
+    }
+    .search-result {
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      gap: 5px;
+      padding: 11px 12px;
+    }
+    .search-result-title {
+      font-weight: 850;
+    }
+    .search-result-snippet {
+      color: #4b5563;
+      font-size: 14px;
+      margin: 0;
+    }
+    .person {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 5px;
+      color: #8a3f08;
+      display: inline-block;
+      font-weight: 850;
+      line-height: 1.15;
+      padding: 1px 5px 2px;
+      white-space: nowrap;
+    }
+    .link-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }
+    a {
+      color: var(--accent);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    p, li {
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    .message-list li {
+      border-bottom: 1px solid var(--line);
+      list-style: none;
+      margin: 0;
+      padding: 9px 0;
+    }
+    .message-list {
+      padding: 0;
+    }
+    .sender {
+      font-weight: 700;
+    }
+    .time {
+      color: var(--muted);
+      font-size: 13px;
+      margin-right: 8px;
+    }
+    @media (max-width: 640px) {
+      main {
+        padding: 12px 10px 32px;
+      }
+      header {
+        margin-bottom: 12px;
+        padding: 14px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+        margin-top: 22px;
+        padding-top: 16px;
+      }
+      .report h1 {
+        font-size: 23px;
+        margin-bottom: 18px;
+      }
+      .report h3 {
+        font-size: 16px;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 7px;
+        font-size: 12px;
+      }
+      .meta span {
+        border-radius: 7px;
+        padding: 6px 8px;
+      }
+      .panel {
+        border-radius: 6px;
+        margin: 12px 0;
+        padding: 13px 12px;
+      }
+      .issue-card {
+        border-left-width: 3px;
+        border-radius: 6px;
+        margin: 10px 0;
+        padding: 12px 10px;
+      }
+      ul {
+        padding-left: 18px;
+      }
+      li {
+        margin: 5px 0;
+      }
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+      .archive-search input {
+        min-height: 42px;
+      }
+      .wiki-current {
+        padding: 12px;
+      }
+      .person {
+        padding: 1px 4px 2px;
+      }
+      .link-note {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>베르힐(임글) 이글라운딩_5장 사람 관계도</h1>
+  <div class="meta">
+    <span>초안</span>
+    <span>대화 관찰 기준</span>
+    <span>개인 특성은 비공개 분석 메모로 분리</span>
+  </div>
+</header>
+<section class="panel guide">
+  <h2>읽는 기준</h2>
+  <p>이 페이지는 성격 단정이 아니라 대화에서 관찰된 역할, 반응 방식, 주제 연결만 정리한 공개용 관계도 초안입니다.</p>
+  <p><a href="index.html">최신 리포트로 돌아가기</a></p>
+</section>
+<section class="panel report">
+<h1>베르힐(임글) 이글라운딩_5장 사람 관계도 초안</h1>
+<h2>데이터 범위</h2>
+<ul>
+<li>기준 데이터: 자동 조회로 확보된 2026-05-18 21:29 ~ 2026-05-19 13:01 대화 50개</li>
+<li>참여자: 14명</li>
+<li>한계: <code>kakaocli</code>는 14일, 30일, 90일 조회를 요청해도 현재 같은 50개만 반환했다.</li>
+<li>해석 원칙: 성격 단정이 아니라 대화에서 관찰된 역할, 반응 방식, 주제 연결만 적는다.</li>
+<li>개인 배경, 출생연도, 가족관계, 사업/직장 정보, 외모/체형/취향 같은 개인 특성은 공개 관계도에 직접 노출하지 않는다.</li>
+<li>분석 보조용 개인 특성은 <code>_private/person-traits.md</code>에 별도 보관한다.</li>
+</ul>
+<h2>1차 관계도 결론</h2>
+<p>현재 보이는 관계 구조는 대화 관찰 기준 세 축으로 나뉜다.</p>
+<p>1. 점심 번개 실행축: 정정길이 제안과 운영을 잡고, 임미르·박홍진·영호·류현준·정한길·도일이·박창민이 빠르게 붙는다.</p>
+<p>2. 리액션과 농담 확산축: 임미르가 빠른 반응과 말장난으로 흐름을 받으며, 김동민이 후반부 사진 장난을 확장한다.</p>
+<p>3. 외부 소식 공유축: 영호가 호두과자 사업 응원 이슈를 던지고, 이병진·정정길이 농담과 축하 방식으로 받는다.</p>
+<h2>핵심 인물 역할</h2>
+<section class="issue-card">
+<h3>정정길</h3>
+<ul>
+<li>관찰된 역할: 제안자, 일정 운영자, 실행 흐름을 잡는 사람</li>
+<li>근거: 점심 제안, 장소 공유, 가본 사람 확인, 11:30 선주문 안내를 연속으로 맡았다.</li>
+<li>관계상 위치: 점심 번개에서 가장 강한 중심 노드다. 여러 사람이 그의 제안에 바로 반응했다.</li>
+<li>주의: 현재 데이터에서는 업무 리더십 전체가 아니라 이 점심 번개 장면에서의 운영 역할만 확인된다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>임미르</h3>
+<ul>
+<li>관찰된 역할: 빠른 반응자, 분위기 증폭자, 말장난 연결자</li>
+<li>근거: 정정길의 점심 제안에 가장 빠르게 반응했고, 장소·시간 흐름을 이어받았다. 후반에는 <code>kimdo.ai</code> 농담으로 장난을 마무리했다.</li>
+<li>관계상 위치: 정정길의 실행 제안과 김동민의 농담 확장을 모두 받아주는 연결 노드다.</li>
+<li>주의: 장난을 많이 친다는 의미가 아니라, 이번 구간에서 반응 속도와 연결 빈도가 높았다는 뜻이다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>영호</h3>
+<ul>
+<li>관찰된 역할: 참여자, 외부 소식 공유자, 장난의 반응점</li>
+<li>근거: 점심 참여 의사를 밝힌 뒤, 친한 동생의 호두과자 사업 응원을 부탁했다. 이후 사진 장난 흐름에서 난감한 반응을 보이며 대화의 소재가 됐다.</li>
+<li>관계상 위치: 점심 축에도 있고, 사업 응원 축에도 있는 중간 연결점이다.</li>
+<li>주의: 사업 관련 실제 구매나 지원 방식은 확인되지 않았다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>박홍진</h3>
+<ul>
+<li>관찰된 역할: 참석자 정리자, 분위기 전환 보조자</li>
+<li>근거: 점심 참여자 이름을 한 줄로 정리했고, 후반 사진 장난 흐름에도 기여했다.</li>
+<li>관계상 위치: 정정길의 제안을 실제 명단으로 바꾸는 정리 역할을 했다.</li>
+<li>주의: 명단 정리는 한 장면 기준이다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>김동민</h3>
+<ul>
+<li>관찰된 역할: 후반 농담 확장자, 사진 장난의 2차 가공자</li>
+<li>근거: 도일이를 소재로 한 농담, 모자이크 버전, 홍찬욱 성대모사 예고를 연속으로 던졌다.</li>
+<li>관계상 위치: 후반 장난 흐름에서 도일이·홍찬욱·임미르와 연결된다.</li>
+<li>주의: 도일이에 대한 공격적 관계라기보다, 도일이가 웃음으로 받은 장난 흐름으로 보는 편이 안전하다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>도일이</h3>
+<ul>
+<li>관찰된 역할: 점심 참여자, 후반 농담을 웃음으로 받는 사람</li>
+<li>근거: 점심 참석자 명단에 이름을 붙였고, 김동민의 도일이 관련 농담에 웃음으로 반응했다.</li>
+<li>관계상 위치: 점심 실행축과 후반 농담축 모두에 걸쳐 있다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>박현식</h3>
+<ul>
+<li>관찰된 역할: 전날 밤 농담 수신자, 후반 웃음 리액션</li>
+<li>근거: 전날 밤 혼모모 흐름에서 임미르·오정현과 가벼운 농담을 주고받았고, 후반 사진 장난에도 웃음으로 반응했다.</li>
+<li>관계상 위치: 전날 밤 잡담축과 후반 리액션축에 연결된다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>오정현</h3>
+<ul>
+<li>관찰된 역할: 전날 밤 베르힐 노출 이야기의 발화자</li>
+<li>근거: 베르힐이 네이버에 보인다는 흐름을 열고, 일본 모모 농담으로 장면을 받았다.</li>
+<li>관계상 위치: 이번 데이터에서는 전날 밤 잡담의 시작점에 가깝다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>이병진</h3>
+<ul>
+<li>관찰된 역할: 호두과자 사업 이야기에 농담으로 반응한 사람</li>
+<li>근거: 영호의 사업 응원 요청을 가족 기업 농담으로 받았다.</li>
+<li>관계상 위치: 영호의 외부 소식 공유축에 짧게 연결된다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>홍찬욱</h3>
+<ul>
+<li>관찰된 역할: 짧은 웃음 반응자, 김동민 농담의 후속 소재</li>
+<li>근거: 사진 장난 흐름에서 웃음 반응을 했고, 김동민이 성대모사를 예고했다.</li>
+<li>관계상 위치: 후반 농담축에 약하게 연결된다.</li>
+</ul>
+</section>
+<section class="issue-card">
+<h3>류현준, 정한길, 박창민, 김준혁</h3>
+<ul>
+<li>관찰된 역할: 점심 참여 또는 후반 리액션으로 등장</li>
+<li>근거: 류현준·정한길·박창민은 점심 명단 확정 흐름에 들어왔고, 김준혁은 후반 장난에 웃음으로 반응했다.</li>
+<li>관계상 위치: 현재 데이터에서는 보조 노드다. 1~2주 자료가 들어오면 역할이 달라질 수 있다.</li>
+</ul>
+</section>
+<h2>관계선 초안</h2>
+<div class="table-wrap"><table><thead><tr><th>관계선</th><th>강도</th><th>관찰된 패턴</th><th>근거</th></tr></thead><tbody><tr><td>정정길 -&gt; 단체</td><td>강함</td><td>점심 제안과 실행 운영</td><td>장소 공유, 선주문, 도착 시간 안내</td></tr><tr><td>정정길 &lt;-&gt; 임미르</td><td>강함</td><td>제안과 즉시 반응</td><td>점심 제안 직후 참여, 장소·시간 질문</td></tr><tr><td>정정길 &lt;-&gt; 박홍진</td><td>보통</td><td>제안 수락과 명단 정리</td><td>런치 긍정 반응, 참석자 명단 정리</td></tr><tr><td>영호 -&gt; 단체</td><td>보통</td><td>외부 소식 공유와 응원 요청</td><td>호두과자 사업 응원 부탁</td></tr><tr><td>영호 &lt;-&gt; 정정길</td><td>보통</td><td>응원 요청과 축하 방식 확인</td><td>화환 문의, 마음만 받겠다는 답변</td></tr><tr><td>김동민 -&gt; 도일이</td><td>보통</td><td>사진 장난 소재화와 웃음 반응</td><td>도일이 관련 농담, 도일이 웃음 반응</td></tr><tr><td>김동민 -&gt; 홍찬욱</td><td>약함</td><td>성대모사 예고</td><td>후속 실행은 미확인</td></tr><tr><td>임미르 &lt;-&gt; 김동민</td><td>보통</td><td>농담을 AI 말장난으로 마무리</td><td><code>kimdo.ai</code> 반응</td></tr><tr><td>박현식 &lt;-&gt; 임미르</td><td>약함</td><td>전날 밤 말장난</td><td>혼모모, 혼모노 흐름</td></tr><tr><td>오정현 -&gt; 전날 밤 잡담</td><td>약함</td><td>베르힐 노출 이야기 시작</td><td>네이버 노출·모모 농담</td></tr></tbody></table></div>
+<h2>미확인</h2>
+<ul>
+<li>사진 내용은 분석하지 않았다. 따라서 사진 속 인물, 장소, 표정, 맥락은 관계 근거로 쓰지 않는다.</li>
+<li>1~2주치 전체 데이터가 현재 자동 조회로는 확보되지 않았다.</li>
+<li>현재 관계도는 방 전체의 고정 관계가 아니라, 2026-05-18 밤부터 2026-05-19 점심 직후까지의 관찰 초안이다.</li>
+<li>추가 TXT 내보내기나 더 긴 DB 접근이 가능해지면 강도와 중심 인물은 바뀔 수 있다.</li>
+</ul>
+<h2>다음 위키 구성안</h2>
+<p>1. 사람 관계도: 중심 노드, 관계선, 강도, 근거 메시지 범위</p>
+<p>2. 인물별 페이지: 편한 이름, 자주 맡는 역할, 자주 붙는 사람, 반복 주제</p>
+<p>3. 밈/용어 사전: 혼모모, kimdo.ai 같은 방 내부 농담</p>
+<p>4. 사건 타임라인: 점심 번개, 사업 응원, 사진 장난처럼 흐름이 바뀐 장면</p>
+<p>5. 미확인 보관함: 사진 맥락, 후속 실행 여부처럼 단정하면 안 되는 것</p>
+</section>
+
+</main>
+</body>
+</html>
