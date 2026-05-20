@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>서석 LLM Wiki</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #68707d;
+      --line: #d9e0e7;
+      --paper: #ffffff;
+      --soft: #f6f4ee;
+      --soft-2: #eef5f3;
+      --accent: #16736f;
+      --accent-2: #b45309;
+      --accent-3: #4f46e5;
+      --shadow: 0 14px 38px rgba(35, 42, 52, 0.08);
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+      line-height: 1.62;
+      overflow-x: hidden;
+    }
+    main {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      padding: 20px;
+    }
+    h1, h2 {
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+    h1 { font-size: 30px; letter-spacing: 0; }
+    h2 {
+      border-top: 1px solid var(--line);
+      font-size: 21px;
+      margin-top: 30px;
+      padding-top: 22px;
+    }
+    .meta {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 14px;
+    }
+    .meta span {
+      background: #f8fafc;
+      border: 1px solid #e3e9ef;
+      border-radius: 999px;
+      max-width: 100%;
+      padding: 5px 9px;
+      overflow-wrap: anywhere;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+    .report h1 {
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+    .report h2:first-of-type {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .report h3 {
+      color: #132f2c;
+      font-size: 18px;
+      margin: 0 0 11px;
+    }
+    .issue-card {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      margin: 13px 0;
+      padding: 15px 17px;
+      background: linear-gradient(90deg, #fbfffd 0%, #ffffff 45%);
+    }
+    .report h2:nth-of-type(1) + ul {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+    }
+    .report h2:nth-of-type(1) + ul > li {
+      background: var(--soft-2);
+      border: 1px solid #d8e7e3;
+      border-radius: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 12px 14px;
+    }
+    .report p {
+      margin: 8px 0;
+    }
+    .report ul {
+      margin: 8px 0 0;
+    }
+    .report .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+    .report table {
+      border-collapse: collapse;
+      min-width: 100%;
+      font-size: 14px;
+    }
+    .report th,
+    .report td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .report th {
+      background: #eef5f3;
+      color: #132f2c;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .report li strong:first-child {
+      color: var(--accent);
+    }
+    code {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      color: #334155;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      padding: 1px 5px;
+    }
+    .guide {
+      background: #fffaf0;
+      border-color: #ead9b8;
+    }
+    .guide h2 {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .wiki-nav {
+      display: grid;
+      gap: 14px;
+    }
+    .wiki-nav h2 {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .wiki-nav-note {
+      color: var(--muted);
+      margin: 0;
+    }
+    .wiki-current {
+      align-items: start;
+      background: #f8fbfa;
+      border: 1px solid #d6e6e2;
+      border-radius: 8px;
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+    }
+    .wiki-current a,
+    .archive-link {
+      font-weight: 800;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+      gap: 10px;
+      padding: 0;
+    }
+    .archive-grid li {
+      list-style: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfe;
+    }
+    .archive-grid li.selected {
+      background: #f1f8f7;
+      border-color: #9fd2cb;
+      box-shadow: inset 0 0 0 1px #bfe2dd;
+    }
+    .archive-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .archive-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .archive-search {
+      display: grid;
+      gap: 12px;
+    }
+    .search-row {
+      display: grid;
+      gap: 8px;
+    }
+    .search-label {
+      color: #25313c;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    .archive-search input {
+      appearance: none;
+      background: #ffffff;
+      border: 1px solid #cbd7df;
+      border-radius: 8px;
+      color: var(--ink);
+      font: inherit;
+      min-height: 44px;
+      outline: none;
+      padding: 10px 12px;
+      width: 100%;
+    }
+    .archive-search input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(22, 115, 111, 0.14);
+    }
+    .search-results {
+      display: grid;
+      gap: 8px;
+    }
+    .search-result {
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      gap: 5px;
+      padding: 11px 12px;
+    }
+    .search-result-title {
+      font-weight: 850;
+    }
+    .search-result-snippet {
+      color: #4b5563;
+      font-size: 14px;
+      margin: 0;
+    }
+    .person {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 5px;
+      color: #8a3f08;
+      display: inline-block;
+      font-weight: 850;
+      line-height: 1.15;
+      padding: 1px 5px 2px;
+      white-space: nowrap;
+    }
+    .link-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }
+    a {
+      color: var(--accent);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    p, li {
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+    }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    .message-list li {
+      border-bottom: 1px solid var(--line);
+      list-style: none;
+      margin: 0;
+      padding: 9px 0;
+    }
+    .message-list {
+      padding: 0;
+    }
+    .sender {
+      font-weight: 700;
+    }
+    .time {
+      color: var(--muted);
+      font-size: 13px;
+      margin-right: 8px;
+    }
+    @media (max-width: 640px) {
+      main {
+        padding: 12px 10px 32px;
+      }
+      header {
+        margin-bottom: 12px;
+        padding: 14px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
+        margin-top: 22px;
+        padding-top: 16px;
+      }
+      .report h1 {
+        font-size: 23px;
+        margin-bottom: 18px;
+      }
+      .report h3 {
+        font-size: 16px;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 7px;
+        font-size: 12px;
+      }
+      .meta span {
+        border-radius: 7px;
+        padding: 6px 8px;
+      }
+      .panel {
+        border-radius: 6px;
+        margin: 12px 0;
+        padding: 13px 12px;
+      }
+      .issue-card {
+        border-left-width: 3px;
+        border-radius: 6px;
+        margin: 10px 0;
+        padding: 12px 10px;
+      }
+      ul {
+        padding-left: 18px;
+      }
+      li {
+        margin: 5px 0;
+      }
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+      .archive-search input {
+        min-height: 42px;
+      }
+      .wiki-current {
+        padding: 12px;
+      }
+      .person {
+        padding: 1px 4px 2px;
+      }
+      .link-note {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>서석 LLM Wiki</h1>
+  <div class="meta">
+    <span>compiled 2026-05-20 18:02</span>
+    <span><a href="../index.html">오늘 리포트</a></span>
+    <span><a href="index.html">LLM Wiki 홈</a></span>
+  </div>
+</header>
+<section class="panel report">
+  <h1>아직 닫히지 않은 떡밥</h1>
+<h2>국장 포지션</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-20 오전에도 현대차·삼전·국장 탈출·반등 언급이 반복됐다.</li>
+<li>다음 확인: 절반 정리인지, 계속 보유인지, 종목별 대응이 나뉘었는지.</li>
+</ul>
+<h2>후쿠오카 텐진 저녁 예약</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-20 15:13~15:25 사이 상민이 27일 후쿠오카 텐진 업체 저녁 장소를 물었고, 임미르가 경험 기반으로 식당 후보와 예약 가능 시간대를 추천했다.</li>
+<li>다음 확인: 17:00 또는 21:30 중 실제 예약 시간이 정해졌는지, 다른 식당으로 바뀌었는지.</li>
+</ul>
+<h2>야구 직관 조율</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-19 20:39~22:09 사이 전우성과 강병훈이 키움·엘지·잠실 경기 이야기를 했고, 강병훈이 딸에게 허락을 구해보겠다고 했다.</li>
+<li>다음 확인: 강병훈이 실제로 갈 수 있는지, 경기와 일정이 확정됐는지.</li>
+</ul>
+<h2>테슬라 처분과 구매 의사</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-20 후반 서환이가 테슬라 처분가를 말했고, 현배의 테슬라 구매 언급이 이어졌다.</li>
+<li>다음 확인: 서환이의 처분이 실제 완료인지 가격 공유인지, 현배의 구매 언급이 계획인지 농담인지.</li>
+</ul>
+<h2>젤리와 아이 치아 관리</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-20 16:31~17:12 사이 젤리, 치아, 어린이집, 하리보 이야기가 이어졌다.</li>
+<li>다음 확인: 상민 쪽에서 젤리 제한이나 치아 관리 방식이 실제로 정해졌는지.</li>
+</ul>
+<h2>공동인증서 갱신</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-19 16시대 임미르가 맥·모바일·OTP·기기 제한으로 갱신 실패를 토로했다.</li>
+<li>다음 확인: 윈도우 환경에서 최종 해결됐는지.</li>
+</ul>
+<h2>어린이집 연장반 문제</h2>
+<ul>
+<li>상태: 미확인</li>
+<li>최근 근거: 2026-05-19 16시대 상민과 강병훈 쪽에서 연장반·돌봄 공백 이야기가 나왔다.</li>
+<li>다음 확인: 대타 운영 또는 가정 내 일정 조정이 어떻게 됐는지.</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>
